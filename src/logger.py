@@ -12,4 +12,7 @@ logging.basicConfig(
     filename=LOG_FILE_PATH,
     format="[ %(asctime)s ] %(lineno)d %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO,
-)
+) 
+
+# Initializes structured logging with a timestamp-based log file created dynamically for each execution.
+# Configures standardized log formatting to improve debugging and traceability across the project.
