@@ -263,7 +263,7 @@ The logging, exception handling, artifact saving, and Flask serving layer all wo
 ## Acknowledgements
 
 - Dataset by [Rohan Joseph on Kaggle](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)
-- Deployment inspiration by [Krish Naik's](https://www.youtube.com/@krishnaik06) End-to-End ML course
+- Deployment inspiration by [Krish Naik's](https://www.youtube.com/@krishnaik06)
 
 ---
 
