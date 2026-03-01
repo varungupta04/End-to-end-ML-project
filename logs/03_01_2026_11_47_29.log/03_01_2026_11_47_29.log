@@ -1,0 +1,41 @@
+[ 2026-03-01 11:47:29,191 ] 224 werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.88.18:8080
+[ 2026-03-01 11:47:29,192 ] 224 werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2026-03-01 11:47:35,098 ] 224 werkzeug - INFO - 127.0.0.1 - - [01/Mar/2026 11:47:35] "GET / HTTP/1.1" 200 -
+[ 2026-03-01 11:48:08,493 ] 1741 app - ERROR - Exception on /predictdata [GET]
+Traceback (most recent call last):
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/Downloads/mlproj/app.py", line 20, in predict_datapoint
+    return render_template('home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/flask/templating.py", line 147, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/flask/templating.py", line 130, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/varungupta/Downloads/mlproj/templates/home.html", line 383, in top-level template code
+    <div class="result-value">{{ "%.1f"|format(results) }}</div>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/jinja2/filters.py", line 1002, in do_format
+    return soft_str(value) % (kwargs or args)
+           ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+jinja2.exceptions.UndefinedError: 'results' is undefined
+[ 2026-03-01 11:48:08,501 ] 224 werkzeug - INFO - 127.0.0.1 - - [01/Mar/2026 11:48:08] "[35m[1mGET /predictdata HTTP/1.1[0m" 500 -

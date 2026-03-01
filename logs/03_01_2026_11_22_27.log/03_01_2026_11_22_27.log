@@ -1,0 +1,46 @@
+[ 2026-03-01 11:22:27,933 ] 224 werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.88.18:8080
+[ 2026-03-01 11:22:27,933 ] 224 werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2026-03-01 11:22:37,998 ] 224 werkzeug - INFO - 127.0.0.1 - - [01/Mar/2026 11:22:37] "GET / HTTP/1.1" 200 -
+[ 2026-03-01 11:22:51,727 ] 224 werkzeug - INFO - 127.0.0.1 - - [01/Mar/2026 11:22:51] "GET /predictdata HTTP/1.1" 200 -
+[ 2026-03-01 11:23:06,452 ] 1741 app - ERROR - Exception on /predictdata [POST]
+Traceback (most recent call last):
+  File "/Users/varungupta/Downloads/mlproj/src/utils.py", line 58, in load_object
+    with open(file_path, "rb") as file_obj:
+         ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'artifacts/preprocessor.pkl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varungupta/Downloads/mlproj/src/pipeline/predict_pipeline.py", line 18, in predict
+    preprocessor=load_object(file_path=preprocessor_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/Downloads/mlproj/src/utils.py", line 62, in load_object
+    raise CustomException(e, sys)
+src.exception.CustomException: Error occured in python script name [/Users/varungupta/Downloads/mlproj/src/utils.py] line number [58] error message[[Errno 2] No such file or directory: 'artifacts/preprocessor.pkl']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/anaconda3/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/Downloads/mlproj/app.py", line 38, in predict_datapoint
+    results=predict_pipeline.predict(pred_df)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/varungupta/Downloads/mlproj/src/pipeline/predict_pipeline.py", line 25, in predict
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [/Users/varungupta/Downloads/mlproj/src/pipeline/predict_pipeline.py] line number [18] error message[Error occured in python script name [/Users/varungupta/Downloads/mlproj/src/utils.py] line number [58] error message[[Errno 2] No such file or directory: 'artifacts/preprocessor.pkl']]
+[ 2026-03-01 11:23:06,456 ] 224 werkzeug - INFO - 127.0.0.1 - - [01/Mar/2026 11:23:06] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
